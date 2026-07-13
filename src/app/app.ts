@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from './product.model';
 import { PRODUCTS } from './products-data';
@@ -19,7 +19,7 @@ interface CartItem {
 export class App {
   productos: Product[] = PRODUCTS;
   carrito: CartItem[] = [];
-  searchTerm: string = '';
+  busqueda: string = '';
 
   addToCart(producto: Product) {
     this.carrito.push({ producto, cantidad: 1 });
@@ -31,7 +31,7 @@ export class App {
 
   get filteredProducts(): Product[] {
     return this.productos.filter(p =>
-      p.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
+      p.nombre.toLowerCase().includes(this.busqueda.toLowerCase())
     );
   }
 
