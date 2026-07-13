@@ -1,7 +1,7 @@
 <div class="layout">
   <header>
     <h1>🛒 TechStore</h1>
-    <div class="cart-badge">Carrito: {{ getItemCount() }} items — Total: S/ {{ getTotal() }}</div>
+    <div class="cart-badge">Carrito - Total: S/ {{ getTotal() }}</div>
   </header>
 
   <div class="content">
@@ -17,7 +17,9 @@
 
       <div class="grid">
         <div class="card" *ngFor="let product of filteredProducts">
-          <img [src]="product.imagen" [alt]="product.nombre" />
+          <div>
+            <img [src]="product.imagen" [alt]="product.nombre" />
+          </div>
           <h3>{{ product.nombre }}</h3>
           <p>S/ {{ product.precio }}</p>
           <button class="card-button" (click)="addToCart(product)">Agregar al carrito</button>

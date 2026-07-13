@@ -22,12 +22,6 @@ export class App {
   searchTerm: string = '';
 
   addToCart(producto: Product) {
-    // const existente = this.carrito.find(item => item.producto.id === producto.id);
-    // if (existente) {
-    //   existente.cantidad++;
-    // } else {
-    //   this.carrito.push({ producto, cantidad: 1 });
-    // }
     this.carrito.push({ producto, cantidad: 1 });
   }
 
@@ -44,9 +38,5 @@ export class App {
   getTotal(): number {
     console.log('Calculando total...');
     return this.carrito.reduce((sum, item) => sum + item.producto.precio * item.cantidad, 0);
-  }
-
-  getItemCount(): number {
-    return this.carrito.reduce((sum, item) => sum + item.cantidad, 0);
   }
 }

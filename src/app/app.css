@@ -7,6 +7,7 @@ header { display: flex; justify-content: space-between; align-items: center; mar
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
 .card { border: 1px solid #ddd; border-radius: 8px; padding: 0.5rem; text-align: center; }
 .card img { width: 100%; border-radius: 6px; }
+.card div {min-height: 200px; display: flex; justify-content: center; align-items: center;}
 .card button { margin-top: 0.5rem; width: 100%; padding: 0.4rem; cursor: pointer; }
 .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.9rem; }
 .cart-total { border-top: 1px solid #ccc; margin-top: 0.5rem; padding-top: 0.5rem; }
