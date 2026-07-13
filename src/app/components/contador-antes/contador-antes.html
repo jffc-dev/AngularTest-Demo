@@ -1,0 +1,28 @@
+<div class="page">
+
+  <div class="counter-container">
+    <span class="counter-title">Contador</span>
+    <span class="counter-value">{{contador}}</span>
+    <p class="doubled-value">El doble es: {{calcularDoble()}}</p>
+
+    <div class="counter-buttons">
+      <button class="btn-decrement" (click)="reducir()">-</button>
+      <button class="btn-reset" (click)="reiniciar()">Reset</button>
+      <button class="btn-increment" (click)="incrementar()">+</button>
+    </div>
+  </div>
+
+  <div class="divider">
+    <span></span>
+  </div>
+
+  <div class="color-picker-container">
+    <div class="color-box" [style.background-color]="color"></div>
+    <div class="color-buttons">
+      <button class="btn-color btn-red" (click)="cambiarColor('red')"></button>
+      <button class="btn-color btn-blue" (click)="cambiarColor('blue')"></button>
+      <button class="btn-color btn-yellow" (click)="cambiarColor('yellow')"></button>
+    </div>
+  </div>
+
+</div>
