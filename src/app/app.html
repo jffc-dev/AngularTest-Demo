@@ -20,7 +20,7 @@
           <img [src]="product.imagen" [alt]="product.nombre" />
           <h3>{{ product.nombre }}</h3>
           <p>S/ {{ product.precio }}</p>
-          <button (click)="addToCart(product)">Agregar al carrito</button>
+          <button class="card-button" (click)="addToCart(product)">Agregar al carrito</button>
         </div>
       </div>
     </section>

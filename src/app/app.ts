@@ -19,7 +19,7 @@ interface CartItem {
 export class App {
   productos: Product[] = PRODUCTS;
   carrito: CartItem[] = [];
-  searchTerm: string = ''; // buscador señuelo, no filtra el carrito
+  searchTerm: string = '';
 
   addToCart(producto: Product) {
     // const existente = this.carrito.find(item => item.producto.id === producto.id);
@@ -35,20 +35,12 @@ export class App {
     this.carrito = this.carrito.filter(item => item.producto.id !== productId);
   }
 
-  // Filtra productos en pantalla según lo que el usuario escribe.
-  // Este método también se re-ejecuta en cada detección de cambios,
-  // pero aquí SÍ tiene sentido porque depende de "searchTerm" cambiando
-  // constantemente mientras se escribe.
   get filteredProducts(): Product[] {
     return this.productos.filter(p =>
       p.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
-  // Función normal: se re-ejecuta en CADA detección de cambios,
-  // incluso cuando solo se escribe en el buscador y el carrito
-  // no cambió en absoluto. Este es el punto clave a demostrar
-  // antes de refactorizar a computed().
   getTotal(): number {
     console.log('Calculando total...');
     return this.carrito.reduce((sum, item) => sum + item.producto.precio * item.cantidad, 0);
