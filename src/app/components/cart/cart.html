@@ -1,0 +1,43 @@
+<div class="layout">
+  <header>
+    <h1>🛒 TechStore</h1>
+    <div class="cart-badge">Carrito - Total: S/ {{ getTotal() }}</div>
+  </header>
+
+  <div class="content">
+    <section class="products">
+      <h2>Productos</h2>
+
+      <input
+        type="text"
+        class="search-box"
+        placeholder="Buscar producto... (solo para probar re-render)"
+        [(ngModel)]="busqueda"
+      />
+
+      <div class="grid">
+        <div class="card" *ngFor="let product of filteredProducts()">
+          <div>
+            <img [src]="product.imagen" [alt]="product.nombre" />
+          </div>
+          <h3>{{ product.nombre }}</h3>
+          <p>S/ {{ product.precio }}</p>
+          <button class="card-button" (click)="addToCart(product)">Agregar al carrito</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="cart">
+      <h2>Tu carrito</h2>
+      <p *ngIf="carrito().length === 0">Aún no hay productos.</p>
+      <div class="cart-item" *ngFor="let item of carrito()">
+        <span>{{ item.producto.nombre }} x{{ item.cantidad }}</span>
+        <span>S/ {{ item.producto.precio * item.cantidad }}</span>
+        <button (click)="removeFromCart(item.producto.id)">✕</button>
+      </div>
+      <div class="cart-total" *ngIf="carrito().length > 0">
+        <strong>Total: S/ {{ getTotal() }}</strong>
+      </div>
+    </aside>
+  </div>
+</div>
