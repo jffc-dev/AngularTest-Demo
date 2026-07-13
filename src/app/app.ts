@@ -1,42 +1,40 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Product } from './product.model';
-import { PRODUCTS } from './products-data';
-import { FormsModule } from '@angular/forms';
-
-interface CartItem {
-  producto: Product;
-  cantidad: number;
-}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 export class App {
-  productos: Product[] = PRODUCTS;
-  carrito: CartItem[] = [];
-  busqueda: string = '';
+  // codigo del contador
 
-  addToCart(producto: Product) {
-    this.carrito.push({ producto, cantidad: 1 });
+  contador = 0
+
+  incrementar(){
+    this.contador++;
   }
 
-  removeFromCart(productId: number) {
-    this.carrito = this.carrito.filter(item => item.producto.id !== productId);
+  reducir(){
+    this.contador--;
   }
 
-  get filteredProducts(): Product[] {
-    return this.productos.filter(p =>
-      p.nombre.toLowerCase().includes(this.busqueda.toLowerCase())
-    );
+  reiniciar(){
+    this.contador = 0;
   }
 
-  getTotal(): number {
-    console.log('Calculando total...');
-    return this.carrito.reduce((sum, item) => sum + item.producto.precio * item.cantidad, 0);
+  calcularDoble(){
+    console.log('Calculando el doble...')
+    return this.contador * 2;
+  }
+
+
+  // codigo del selector de colores
+
+  color = 'white'
+
+  cambiarColor(nuevoColor: string){
+    this.color = nuevoColor;
   }
 }
